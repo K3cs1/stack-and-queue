@@ -1,13 +1,11 @@
 package com.the10xacademy.homework;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Optional;
 
 public class BrowserHistoryImpl implements BrowserHistory {
 
-    private Deque<String> backStack = new ArrayDeque<>();
-    private Deque<String> forwardStack =  new ArrayDeque<>();
+    private Stack<String> backStack = new Stack<>();
+    private Stack<String> forwardStack = new Stack<>();
 
     @Override
     public void visit(String url) {
@@ -26,7 +24,7 @@ public class BrowserHistoryImpl implements BrowserHistory {
     @Override
     public Optional<String> forward() {
         if (forwardStack.isEmpty()) {
-            Optional.empty();
+            return Optional.empty();
         }
         Optional<String> forwardOptional = Optional.ofNullable(forwardStack.peek());
         forwardStack.clear();
